@@ -6,8 +6,8 @@ router.get("/", function (req, res, next) {
   const segments = [
     {
       id: 1,
-      segmentId: 1,
-      contactId: 100,
+      segment: 1,
+      contact: 100,
     },
   ];
   res.send(segments);
