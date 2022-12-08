@@ -3,8 +3,12 @@ var router = express.Router();
 const mongoose = require("mongoose");
 const segmentModel = require("../models/segment.model");
 
-/* GET segment listing. */
 router.get("/", function (req, res, next) {
+  res.send("Hold on a moment!");
+});
+
+/* GET segment listing. */
+router.get("/list", function (req, res, next) {
   // retrive all the segments from database
   segmentModel.find().exec(function (err, segments) {
     if (err) return next(err);

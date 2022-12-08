@@ -10,9 +10,9 @@ router.get("/", function (req, res, next) {
     if (err) return next(err);
     res.status(200).json(contacts);
   });
-  // res.send("contact route is under construction");
 });
 
+// insert new contact into database
 router.post("/", function (req, res, next) {
   console.log(req.body);
   let newContactData = new contactModel(req.body);
@@ -28,6 +28,19 @@ router.post("/", function (req, res, next) {
         success: true,
       });
     }
+  });
+});
+
+// delete a contact from database by mongoDB objectId
+
+router.delete("/:id", function (req, res, next) {
+  console.log(req.params.id);
+  let id = req.params.id;
+  contactModel.findByIdAndRemove(id, function (err, deletedContact) {
+    if (err) {
+      return next(err);
+    }
+    res.status(200).json(deletedContact);
   });
 });
 
