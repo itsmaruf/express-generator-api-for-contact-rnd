@@ -3,13 +3,14 @@ var router = express.Router();
 
 /* GET contact listing. */
 router.get("/", function (req, res, next) {
-  const segments = [
+  const segmentLists = [
     {
       id: 1,
-      segmentName: "my segment",
+      segment: 100,
+      contact: 200,
     },
   ];
-  res.send(segments);
+  res.send(segmentLists);
 });
 
 module.exports = router;
