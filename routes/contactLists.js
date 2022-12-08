@@ -15,6 +15,7 @@ router.get("/", function (req, res, next) {
 // insert new contact into database
 router.post("/", function (req, res, next) {
   console.log(req.body);
+
   let newContactData = new contactModel(req.body);
 
   newContactData.save(function (err, newContact) {
