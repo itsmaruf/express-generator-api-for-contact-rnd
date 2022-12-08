@@ -4,6 +4,21 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
+// mongoose config
+var mongoose = require("mongoose");
+mongoose.set("strictQuery", true);
+
+// get the url
+var dbURL = require("./properties").DB_URL;
+
+// connection
+mongoose.connect(dbURL);
+
+// check connection
+mongoose.connection.on("connected", () => {
+  console.log("Connected to MongoDB");
+});
+
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var contactsRouter = require("./routes/contactLists");
