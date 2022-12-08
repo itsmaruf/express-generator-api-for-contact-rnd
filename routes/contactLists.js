@@ -44,4 +44,25 @@ router.delete("/:id", function (req, res, next) {
   });
 });
 
+// update a contact model by mongoDB objectId
+
+router.put("/:id", function (req, res, next) {
+  console.log(req.params.id);
+  let id = req.params.id;
+  const updatedValue = req.body;
+  contactModel.findByIdAndUpdate(
+    id,
+    updatedValue,
+    {
+      new: true,
+    },
+    function (err, updatedContact) {
+      if (err) {
+        return next(err);
+      }
+      res.status(200).json(updatedContact);
+    }
+  );
+});
+
 module.exports = router;
