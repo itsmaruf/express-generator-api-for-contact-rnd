@@ -5,7 +5,12 @@ const contactModel = require("../models/contact.model");
 
 /* GET contact listing. */
 router.get("/", function (req, res, next) {
-  res.send("contact route is under construction");
+  // retrive all the contacts from database
+  contactModel.find().exec(function (err, contacts) {
+    if (err) return next(err);
+    res.status(200).json(contacts);
+  });
+  // res.send("contact route is under construction");
 });
 
 router.post("/", function (req, res, next) {
