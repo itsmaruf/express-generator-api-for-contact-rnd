@@ -45,5 +45,25 @@ router.delete("/:id", function (req, res, next) {
   });
 });
 
+// update a segment model by mongoDB objectId
+
+router.put("/:id", function (req, res, next) {
+  console.log(req.params.id);
+  let id = req.params.id;
+  const updatedValue = req.body;
+  segmentModel.findByIdAndUpdate(
+    id,
+    updatedValue,
+    {
+      new: true,
+    },
+    function (err, updatedSegment) {
+      if (err) {
+        return next(err);
+      }
+      res.status(200).json(updatedSegment);
+    }
+  );
+});
 
 module.exports = router;
