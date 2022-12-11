@@ -9,6 +9,6 @@ const contactSchema = mongoose.Schema({
   },
 });
 
-const contactModel = mongoose.model("Contact", contactSchema);
+const contactModel = mongoose.model("contact", contactSchema);
 
 module.exports = contactModel;
